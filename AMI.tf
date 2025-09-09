@@ -1,3 +1,9 @@
+  Q/A : HOW WILL YOU GET THE LATEST AMI AND IMPLEMENT?
+             AS WE USE THE DATASOURCE PROCESS GET THE LATEST AMI using the FILTERS[filters & values & owner &name]
+                    I always get the newest AMI matching my criteria, which avoids hardcoding IDs and helps maintain consistency and security
+
+------------------------------------------------------------------
+
 # Ubuntu
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -72,3 +78,26 @@ data "aws_ami" "debian" {
     values = ["debian-*-*-*-amd64-*"]
   }
 }
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+#IF NEEDED CAN USE 
+optional
+locals {
+  selected_ami = {
+    ubuntu       = data.aws_ami.ubuntu.id
+    amazon       = data.aws_ami.amazon_linux.id
+    rhel         = data.aws_ami.rhel.id
+    windows      = data.aws_ami.windows.id
+    suse         = data.aws_ami.suse.id
+    debian       = data.aws_ami.debian.id
+  }[var.os_type]
+}
+
+
+
+
+
+
+
+
+
