@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-stable
+  labels:
+    project: end-project
+spec:
+  selector:
+    matchLabels:
+      project: end-project
+  template:
+    metadata:
+      name: database
+      labels:
+        project: end-project
+    spec:
+      containers:
+        - name: permanent-database
+          image: postgres
+          env:
+            - name: POSTGRES_USER
+              value: chandu
+            - name: POSTGRES_PASSWORD
+              value: chandu
+            - name: POSTGRES_DB
+              value: chandu

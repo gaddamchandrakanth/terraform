@@ -1,0 +1,14 @@
+---
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: temporary-database
+  labels:
+    project: end-project
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 6379
+      port: 6379
+  selector:
+    project: end-project

@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-end-project
+  labels:
+    project: end-project
+spec:
+  selector:
+    matchLabels:
+      project: end-project
+  template:
+    metadata:
+      name: work-application
+      labels: end-project
+    spec:
+      containers:
+        - name: worker-application
+          image: dockersamples/examplevotingapp_worker

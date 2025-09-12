@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-redis
+  labels:
+    project: end-project
+spec:
+  selector:
+    matchLabels:
+      project: end-project
+  template:
+    metadata:
+      name: database
+      labels:
+        project:end-project
+  spec:
+    containers:
+      - name: temporary-database
+        image: redis
+
